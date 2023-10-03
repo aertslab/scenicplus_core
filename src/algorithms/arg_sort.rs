@@ -107,6 +107,7 @@ impl Radixable<f64> for ArgSortRadix<f64> {
 pub trait ArgSort<T: PartialOrd> {
     fn arg_sort(&self) -> Vec<usize>;
     fn arg_sort_radix(&self) -> Vec<usize>;
+    fn arg_sort_fastest(&self) -> Vec<usize>;
 }
 
 impl ArgSort<i8> for &[i8] {
@@ -123,8 +124,14 @@ impl ArgSort<i8> for &[i8] {
             .map(|(i, v)| ArgSortRadix { idx: i, value: *v })
             .collect::<Vec<_>>();
         idx_value_data.voracious_sort();
-        let indices = idx_value_data.into_iter().map(|x| x.idx).collect();
-        indices
+        idx_value_data.into_iter().map(|x| x.idx).collect()
+    }
+
+    fn arg_sort_fastest(&self) -> Vec<usize> {
+        match self.len() >= 2000 {
+            false => self.arg_sort(),
+            true => self.arg_sort_radix(),
+        }
     }
 }
 
@@ -142,8 +149,14 @@ impl ArgSort<i16> for &[i16] {
             .map(|(i, v)| ArgSortRadix { idx: i, value: *v })
             .collect::<Vec<_>>();
         idx_value_data.voracious_sort();
-        let indices = idx_value_data.into_iter().map(|x| x.idx).collect();
-        indices
+        idx_value_data.into_iter().map(|x| x.idx).collect()
+    }
+
+    fn arg_sort_fastest(&self) -> Vec<usize> {
+        match self.len() >= 2000 {
+            false => self.arg_sort(),
+            true => self.arg_sort_radix(),
+        }
     }
 }
 
@@ -161,8 +174,14 @@ impl ArgSort<i32> for &[i32] {
             .map(|(i, v)| ArgSortRadix { idx: i, value: *v })
             .collect::<Vec<_>>();
         idx_value_data.voracious_sort();
-        let indices = idx_value_data.into_iter().map(|x| x.idx).collect();
-        indices
+        idx_value_data.into_iter().map(|x| x.idx).collect()
+    }
+
+    fn arg_sort_fastest(&self) -> Vec<usize> {
+        match self.len() >= 2000 {
+            false => self.arg_sort(),
+            true => self.arg_sort_radix(),
+        }
     }
 }
 
@@ -180,8 +199,16 @@ impl ArgSort<i64> for &[i64] {
             .map(|(i, v)| ArgSortRadix { idx: i, value: *v })
             .collect::<Vec<_>>();
         idx_value_data.voracious_sort();
-        let indices = idx_value_data.into_iter().map(|x| x.idx).collect();
-        indices
+        idx_value_data.into_iter().map(|x| x.idx).collect()
+    }
+
+    fn arg_sort_fastest(&self) -> Vec<usize> {
+        // For some reason radix sort is only faster from 9000 elements for i64
+        // and not from 2000 elements like for other primitives.
+        match self.len() >= 9000 {
+            false => self.arg_sort(),
+            true => self.arg_sort_radix(),
+        }
     }
 }
 impl ArgSort<u8> for &[u8] {
@@ -198,8 +225,14 @@ impl ArgSort<u8> for &[u8] {
             .map(|(i, v)| ArgSortRadix { idx: i, value: *v })
             .collect::<Vec<_>>();
         idx_value_data.voracious_sort();
-        let indices = idx_value_data.into_iter().map(|x| x.idx).collect();
-        indices
+        idx_value_data.into_iter().map(|x| x.idx).collect()
+    }
+
+    fn arg_sort_fastest(&self) -> Vec<usize> {
+        match self.len() >= 2000 {
+            false => self.arg_sort(),
+            true => self.arg_sort_radix(),
+        }
     }
 }
 
@@ -217,8 +250,14 @@ impl ArgSort<u16> for &[u16] {
             .map(|(i, v)| ArgSortRadix { idx: i, value: *v })
             .collect::<Vec<_>>();
         idx_value_data.voracious_sort();
-        let indices = idx_value_data.into_iter().map(|x| x.idx).collect();
-        indices
+        idx_value_data.into_iter().map(|x| x.idx).collect()
+    }
+
+    fn arg_sort_fastest(&self) -> Vec<usize> {
+        match self.len() >= 2000 {
+            false => self.arg_sort(),
+            true => self.arg_sort_radix(),
+        }
     }
 }
 
@@ -236,8 +275,14 @@ impl ArgSort<u32> for &[u32] {
             .map(|(i, v)| ArgSortRadix { idx: i, value: *v })
             .collect::<Vec<_>>();
         idx_value_data.voracious_sort();
-        let indices = idx_value_data.into_iter().map(|x| x.idx).collect();
-        indices
+        idx_value_data.into_iter().map(|x| x.idx).collect()
+    }
+
+    fn arg_sort_fastest(&self) -> Vec<usize> {
+        match self.len() >= 2000 {
+            false => self.arg_sort(),
+            true => self.arg_sort_radix(),
+        }
     }
 }
 
@@ -255,8 +300,14 @@ impl ArgSort<u64> for &[u64] {
             .map(|(i, v)| ArgSortRadix { idx: i, value: *v })
             .collect::<Vec<_>>();
         idx_value_data.voracious_sort();
-        let indices = idx_value_data.into_iter().map(|x| x.idx).collect();
-        indices
+        idx_value_data.into_iter().map(|x| x.idx).collect()
+    }
+
+    fn arg_sort_fastest(&self) -> Vec<usize> {
+        match self.len() >= 2000 {
+            false => self.arg_sort(),
+            true => self.arg_sort_radix(),
+        }
     }
 }
 
@@ -278,8 +329,14 @@ impl ArgSort<f32> for &[f32] {
             .map(|(i, v)| ArgSortRadix { idx: i, value: *v })
             .collect::<Vec<_>>();
         idx_value_data.voracious_sort();
-        let indices = idx_value_data.into_iter().map(|x| x.idx).collect();
-        indices
+        idx_value_data.into_iter().map(|x| x.idx).collect()
+    }
+
+    fn arg_sort_fastest(&self) -> Vec<usize> {
+        match self.len() >= 2000 {
+            false => self.arg_sort(),
+            true => self.arg_sort_radix(),
+        }
     }
 }
 
@@ -301,7 +358,13 @@ impl ArgSort<f64> for &[f64] {
             .map(|(i, v)| ArgSortRadix { idx: i, value: *v })
             .collect::<Vec<_>>();
         idx_value_data.voracious_sort();
-        let indices = idx_value_data.into_iter().map(|x| x.idx).collect();
-        indices
+        idx_value_data.into_iter().map(|x| x.idx).collect()
+    }
+
+    fn arg_sort_fastest(&self) -> Vec<usize> {
+        match self.len() >= 2000 {
+            false => self.arg_sort(),
+            true => self.arg_sort_radix(),
+        }
     }
 }
