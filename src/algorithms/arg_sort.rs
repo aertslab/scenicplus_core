@@ -1,3 +1,5 @@
+use numpy::{IntoPyArray, PyArray1, PyReadonlyArray1};
+use pyo3::prelude::*;
 use std::cmp::Ordering;
 use voracious_radix_sort::{RadixSort, Radixable};
 
@@ -366,5 +368,346 @@ impl ArgSort<f64> for &[f64] {
             false => self.arg_sort(),
             true => self.arg_sort_radix(),
         }
+    }
+}
+
+#[derive(PartialEq, Eq, Debug)]
+enum ArgSortMethod {
+    Standard,
+    Radix,
+    Fastest,
+}
+use std::fmt;
+impl fmt::Display for ArgSortMethod {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        match *self {
+            ArgSortMethod::Standard => write!(f, "standard"),
+            ArgSortMethod::Radix => write!(f, "radix"),
+            ArgSortMethod::Fastest => write!(f, "fastest"),
+        }
+    }
+}
+
+impl TryFrom<&str> for ArgSortMethod {
+    type Error = ();
+
+    fn try_from(method: &str) -> Result<Self, Self::Error> {
+        //    Self::from_str(input)
+        //}
+        match method {
+            "standard" => Ok(ArgSortMethod::Standard),
+            "radix" => Ok(ArgSortMethod::Radix),
+            "fastest" => Ok(ArgSortMethod::Fastest),
+            _ => Err(()),
+        }
+    }
+}
+
+#[pyfunction]
+#[pyo3(name = "arg_sort_i8")]
+pub fn arg_sort_i8_py<'py>(
+    py: Python<'py>,
+    arr: PyReadonlyArray1<'_, i8>,
+    method: &str,
+) -> &'py PyArray1<usize> {
+    let method = ArgSortMethod::try_from(method).unwrap_or(ArgSortMethod::Fastest);
+
+    match method {
+        ArgSortMethod::Standard => arr
+            .as_array()
+            .as_slice()
+            .unwrap()
+            .arg_sort()
+            .into_pyarray(py),
+        ArgSortMethod::Radix => arr
+            .as_array()
+            .as_slice()
+            .unwrap()
+            .arg_sort_radix()
+            .into_pyarray(py),
+        ArgSortMethod::Fastest => arr
+            .as_array()
+            .as_slice()
+            .unwrap()
+            .arg_sort_fastest()
+            .into_pyarray(py),
+    }
+}
+
+#[pyfunction]
+#[pyo3(name = "arg_sort_i16")]
+pub fn arg_sort_i16_py<'py>(
+    py: Python<'py>,
+    arr: PyReadonlyArray1<'_, i16>,
+    method: &str,
+) -> &'py PyArray1<usize> {
+    let method = ArgSortMethod::try_from(method).unwrap_or(ArgSortMethod::Fastest);
+
+    match method {
+        ArgSortMethod::Standard => arr
+            .as_array()
+            .as_slice()
+            .unwrap()
+            .arg_sort()
+            .into_pyarray(py),
+        ArgSortMethod::Radix => arr
+            .as_array()
+            .as_slice()
+            .unwrap()
+            .arg_sort_radix()
+            .into_pyarray(py),
+        ArgSortMethod::Fastest => arr
+            .as_array()
+            .as_slice()
+            .unwrap()
+            .arg_sort_fastest()
+            .into_pyarray(py),
+    }
+}
+
+#[pyfunction]
+#[pyo3(name = "arg_sort_i32")]
+pub fn arg_sort_i32_py<'py>(
+    py: Python<'py>,
+    arr: PyReadonlyArray1<'_, i32>,
+    method: &str,
+) -> &'py PyArray1<usize> {
+    let method = ArgSortMethod::try_from(method).unwrap_or(ArgSortMethod::Fastest);
+
+    match method {
+        ArgSortMethod::Standard => arr
+            .as_array()
+            .as_slice()
+            .unwrap()
+            .arg_sort()
+            .into_pyarray(py),
+        ArgSortMethod::Radix => arr
+            .as_array()
+            .as_slice()
+            .unwrap()
+            .arg_sort_radix()
+            .into_pyarray(py),
+        ArgSortMethod::Fastest => arr
+            .as_array()
+            .as_slice()
+            .unwrap()
+            .arg_sort_fastest()
+            .into_pyarray(py),
+    }
+}
+
+#[pyfunction]
+#[pyo3(name = "arg_sort_i64")]
+pub fn arg_sort_i64_py<'py>(
+    py: Python<'py>,
+    arr: PyReadonlyArray1<'_, i64>,
+    method: &str,
+) -> &'py PyArray1<usize> {
+    let method = ArgSortMethod::try_from(method).unwrap_or(ArgSortMethod::Fastest);
+
+    match method {
+        ArgSortMethod::Standard => arr
+            .as_array()
+            .as_slice()
+            .unwrap()
+            .arg_sort()
+            .into_pyarray(py),
+        ArgSortMethod::Radix => arr
+            .as_array()
+            .as_slice()
+            .unwrap()
+            .arg_sort_radix()
+            .into_pyarray(py),
+        ArgSortMethod::Fastest => arr
+            .as_array()
+            .as_slice()
+            .unwrap()
+            .arg_sort_fastest()
+            .into_pyarray(py),
+    }
+}
+
+#[pyfunction]
+#[pyo3(name = "arg_sort_u8")]
+pub fn arg_sort_u8_py<'py>(
+    py: Python<'py>,
+    arr: PyReadonlyArray1<'_, u8>,
+    method: &str,
+) -> &'py PyArray1<usize> {
+    let method = ArgSortMethod::try_from(method).unwrap_or(ArgSortMethod::Fastest);
+
+    match method {
+        ArgSortMethod::Standard => arr
+            .as_array()
+            .as_slice()
+            .unwrap()
+            .arg_sort()
+            .into_pyarray(py),
+        ArgSortMethod::Radix => arr
+            .as_array()
+            .as_slice()
+            .unwrap()
+            .arg_sort_radix()
+            .into_pyarray(py),
+        ArgSortMethod::Fastest => arr
+            .as_array()
+            .as_slice()
+            .unwrap()
+            .arg_sort_fastest()
+            .into_pyarray(py),
+    }
+}
+
+#[pyfunction]
+#[pyo3(name = "arg_sort_u16")]
+pub fn arg_sort_u16_py<'py>(
+    py: Python<'py>,
+    arr: PyReadonlyArray1<'_, u16>,
+    method: &str,
+) -> &'py PyArray1<usize> {
+    let method = ArgSortMethod::try_from(method).unwrap_or(ArgSortMethod::Fastest);
+
+    match method {
+        ArgSortMethod::Standard => arr
+            .as_array()
+            .as_slice()
+            .unwrap()
+            .arg_sort()
+            .into_pyarray(py),
+        ArgSortMethod::Radix => arr
+            .as_array()
+            .as_slice()
+            .unwrap()
+            .arg_sort_radix()
+            .into_pyarray(py),
+        ArgSortMethod::Fastest => arr
+            .as_array()
+            .as_slice()
+            .unwrap()
+            .arg_sort_fastest()
+            .into_pyarray(py),
+    }
+}
+
+#[pyfunction]
+#[pyo3(name = "arg_sort_u32")]
+pub fn arg_sort_u32_py<'py>(
+    py: Python<'py>,
+    arr: PyReadonlyArray1<'_, u32>,
+    method: &str,
+) -> &'py PyArray1<usize> {
+    let method = ArgSortMethod::try_from(method).unwrap_or(ArgSortMethod::Fastest);
+
+    match method {
+        ArgSortMethod::Standard => arr
+            .as_array()
+            .as_slice()
+            .unwrap()
+            .arg_sort()
+            .into_pyarray(py),
+        ArgSortMethod::Radix => arr
+            .as_array()
+            .as_slice()
+            .unwrap()
+            .arg_sort_radix()
+            .into_pyarray(py),
+        ArgSortMethod::Fastest => arr
+            .as_array()
+            .as_slice()
+            .unwrap()
+            .arg_sort_fastest()
+            .into_pyarray(py),
+    }
+}
+
+#[pyfunction]
+#[pyo3(name = "arg_sort_u64")]
+pub fn arg_sort_u64_py<'py>(
+    py: Python<'py>,
+    arr: PyReadonlyArray1<'_, u64>,
+    method: &str,
+) -> &'py PyArray1<usize> {
+    let method = ArgSortMethod::try_from(method).unwrap_or(ArgSortMethod::Fastest);
+
+    match method {
+        ArgSortMethod::Standard => arr
+            .as_array()
+            .as_slice()
+            .unwrap()
+            .arg_sort()
+            .into_pyarray(py),
+        ArgSortMethod::Radix => arr
+            .as_array()
+            .as_slice()
+            .unwrap()
+            .arg_sort_radix()
+            .into_pyarray(py),
+        ArgSortMethod::Fastest => arr
+            .as_array()
+            .as_slice()
+            .unwrap()
+            .arg_sort_fastest()
+            .into_pyarray(py),
+    }
+}
+#[pyfunction]
+#[pyo3(name = "arg_sort_f32")]
+pub fn arg_sort_f32_py<'py>(
+    py: Python<'py>,
+    arr: PyReadonlyArray1<'_, f32>,
+    method: &str,
+) -> &'py PyArray1<usize> {
+    let method = ArgSortMethod::try_from(method).unwrap_or(ArgSortMethod::Fastest);
+
+    match method {
+        ArgSortMethod::Standard => arr
+            .as_array()
+            .as_slice()
+            .unwrap()
+            .arg_sort()
+            .into_pyarray(py),
+        ArgSortMethod::Radix => arr
+            .as_array()
+            .as_slice()
+            .unwrap()
+            .arg_sort_radix()
+            .into_pyarray(py),
+        ArgSortMethod::Fastest => arr
+            .as_array()
+            .as_slice()
+            .unwrap()
+            .arg_sort_fastest()
+            .into_pyarray(py),
+    }
+}
+
+#[pyfunction]
+#[pyo3(name = "arg_sort_f64")]
+pub fn arg_sort_f64_py<'py>(
+    py: Python<'py>,
+    arr: PyReadonlyArray1<'_, f64>,
+    method: &str,
+) -> &'py PyArray1<usize> {
+    let method = ArgSortMethod::try_from(method).unwrap_or(ArgSortMethod::Fastest);
+
+    match method {
+        ArgSortMethod::Standard => arr
+            .as_array()
+            .as_slice()
+            .unwrap()
+            .arg_sort()
+            .into_pyarray(py),
+        ArgSortMethod::Radix => arr
+            .as_array()
+            .as_slice()
+            .unwrap()
+            .arg_sort_radix()
+            .into_pyarray(py),
+        ArgSortMethod::Fastest => arr
+            .as_array()
+            .as_slice()
+            .unwrap()
+            .arg_sort_fastest()
+            .into_pyarray(py),
     }
 }
