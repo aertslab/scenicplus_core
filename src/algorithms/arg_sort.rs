@@ -405,6 +405,20 @@ impl TryFrom<&str> for ArgSortMethod {
 
 #[pyfunction]
 #[pyo3(name = "arg_sort_i8")]
+/// Returns the indices that would sort an 1D int8 array.
+///
+/// Perform an indirect sort using the algorithm specified by the `method` keyword.
+/// It returns an array of indices of the same shape as `arr` that index data in
+/// sorted order.
+///
+/// Parameters
+/// ----------
+/// arr
+///     1D continous numpy array.
+/// method
+///     Method to use for sorting: "standard", "radix", "fastest"
+///     (uses standard or radix sort depending on the size).
+///
 pub fn arg_sort_i8_py<'py>(
     py: Python<'py>,
     arr: PyReadonlyArray1<'_, i8>,
@@ -436,6 +450,20 @@ pub fn arg_sort_i8_py<'py>(
 
 #[pyfunction]
 #[pyo3(name = "arg_sort_i16")]
+/// Returns the indices that would sort an 1D int16 array.
+///
+/// Perform an indirect sort using the algorithm specified by the `method` keyword.
+/// It returns an array of indices of the same shape as `arr` that index data in
+/// sorted order.
+///
+/// Parameters
+/// ----------
+/// arr
+///     1D continous numpy array.
+/// method
+///     Method to use for sorting: "standard", "radix", "fastest"
+///     (uses standard or radix sort depending on the size).
+///
 pub fn arg_sort_i16_py<'py>(
     py: Python<'py>,
     arr: PyReadonlyArray1<'_, i16>,
@@ -467,6 +495,20 @@ pub fn arg_sort_i16_py<'py>(
 
 #[pyfunction]
 #[pyo3(name = "arg_sort_i32")]
+/// Returns the indices that would sort an 1D int32 array.
+///
+/// Perform an indirect sort using the algorithm specified by the `method` keyword.
+/// It returns an array of indices of the same shape as `arr` that index data in
+/// sorted order.
+///
+/// Parameters
+/// ----------
+/// arr
+///     1D continous numpy array.
+/// method
+///     Method to use for sorting: "standard", "radix", "fastest"
+///     (uses standard or radix sort depending on the size).
+///
 pub fn arg_sort_i32_py<'py>(
     py: Python<'py>,
     arr: PyReadonlyArray1<'_, i32>,
@@ -498,6 +540,20 @@ pub fn arg_sort_i32_py<'py>(
 
 #[pyfunction]
 #[pyo3(name = "arg_sort_i64")]
+/// Returns the indices that would sort an 1D int64 array.
+///
+/// Perform an indirect sort using the algorithm specified by the `method` keyword.
+/// It returns an array of indices of the same shape as `arr` that index data in
+/// sorted order.
+///
+/// Parameters
+/// ----------
+/// arr
+///     1D continous numpy array.
+/// method
+///     Method to use for sorting: "standard", "radix", "fastest"
+///     (uses standard or radix sort depending on the size).
+///
 pub fn arg_sort_i64_py<'py>(
     py: Python<'py>,
     arr: PyReadonlyArray1<'_, i64>,
@@ -529,6 +585,20 @@ pub fn arg_sort_i64_py<'py>(
 
 #[pyfunction]
 #[pyo3(name = "arg_sort_u8")]
+/// Returns the indices that would sort an 1D uint8 array.
+///
+/// Perform an indirect sort using the algorithm specified by the `method` keyword.
+/// It returns an array of indices of the same shape as `arr` that index data in
+/// sorted order.
+///
+/// Parameters
+/// ----------
+/// arr
+///     1D continous numpy array.
+/// method
+///     Method to use for sorting: "standard", "radix", "fastest"
+///     (uses standard or radix sort depending on the size).
+///
 pub fn arg_sort_u8_py<'py>(
     py: Python<'py>,
     arr: PyReadonlyArray1<'_, u8>,
@@ -560,6 +630,20 @@ pub fn arg_sort_u8_py<'py>(
 
 #[pyfunction]
 #[pyo3(name = "arg_sort_u16")]
+/// Returns the indices that would sort an 1D uint16 array.
+///
+/// Perform an indirect sort using the algorithm specified by the `method` keyword.
+/// It returns an array of indices of the same shape as `arr` that index data in
+/// sorted order.
+///
+/// Parameters
+/// ----------
+/// arr
+///     1D continous numpy array.
+/// method
+///     Method to use for sorting: "standard", "radix", "fastest"
+///     (uses standard or radix sort depending on the size).
+///
 pub fn arg_sort_u16_py<'py>(
     py: Python<'py>,
     arr: PyReadonlyArray1<'_, u16>,
@@ -591,6 +675,20 @@ pub fn arg_sort_u16_py<'py>(
 
 #[pyfunction]
 #[pyo3(name = "arg_sort_u32")]
+/// Returns the indices that would sort an 1D uint32 array.
+///
+/// Perform an indirect sort using the algorithm specified by the `method` keyword.
+/// It returns an array of indices of the same shape as `arr` that index data in
+/// sorted order.
+///
+/// Parameters
+/// ----------
+/// arr
+///     1D continous numpy array.
+/// method
+///     Method to use for sorting: "standard", "radix", "fastest"
+///     (uses standard or radix sort depending on the size).
+///
 pub fn arg_sort_u32_py<'py>(
     py: Python<'py>,
     arr: PyReadonlyArray1<'_, u32>,
@@ -622,6 +720,20 @@ pub fn arg_sort_u32_py<'py>(
 
 #[pyfunction]
 #[pyo3(name = "arg_sort_u64")]
+/// Returns the indices that would sort an 1D uint64 array.
+///
+/// Perform an indirect sort using the algorithm specified by the `method` keyword.
+/// It returns an array of indices of the same shape as `arr` that index data in
+/// sorted order.
+///
+/// Parameters
+/// ----------
+/// arr
+///     1D continous numpy array.
+/// method
+///     Method to use for sorting: "standard", "radix", "fastest"
+///     (uses standard or radix sort depending on the size).
+///
 pub fn arg_sort_u64_py<'py>(
     py: Python<'py>,
     arr: PyReadonlyArray1<'_, u64>,
@@ -650,8 +762,23 @@ pub fn arg_sort_u64_py<'py>(
             .into_pyarray(py),
     }
 }
+
 #[pyfunction]
 #[pyo3(name = "arg_sort_f32")]
+/// Returns the indices that would sort an 1D float32 array.
+///
+/// Perform an indirect sort using the algorithm specified by the `method` keyword.
+/// It returns an array of indices of the same shape as `arr` that index data in
+/// sorted order.
+///
+/// Parameters
+/// ----------
+/// arr
+///     1D continous numpy array.
+/// method
+///     Method to use for sorting: "standard", "radix", "fastest"
+///     (uses standard or radix sort depending on the size).
+///
 pub fn arg_sort_f32_py<'py>(
     py: Python<'py>,
     arr: PyReadonlyArray1<'_, f32>,
@@ -683,6 +810,20 @@ pub fn arg_sort_f32_py<'py>(
 
 #[pyfunction]
 #[pyo3(name = "arg_sort_f64")]
+/// Returns the indices that would sort an 1D float64 array.
+///
+/// Perform an indirect sort using the algorithm specified by the `method` keyword.
+/// It returns an array of indices of the same shape as `arr` that index data in
+/// sorted order.
+///
+/// Parameters
+/// ----------
+/// arr
+///     1D continous numpy array.
+/// method
+///     Method to use for sorting: "standard", "radix", "fastest"
+///     (uses standard or radix sort depending on the size).
+///
 pub fn arg_sort_f64_py<'py>(
     py: Python<'py>,
     arr: PyReadonlyArray1<'_, f64>,

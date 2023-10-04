@@ -18,7 +18,11 @@ dtype_to_arg_sort_func = {
 
 def arg_sort(arr: np.ndarray, method: str | None) -> np.ndarray:
     """
-    Returns the indices that would sort this 1D array.
+    Returns the indices that would sort an 1D array.
+
+    Perform an indirect sort using the algorithm specified by the `method` keyword.
+    It returns an array of indices of the same shape as `arr` that index data in
+    sorted order.
 
     Parameters
     ----------
