@@ -24,6 +24,9 @@ fn scenicplus_core(py: Python, m: &PyModule) -> PyResult<()> {
 
     algorithms_module.add_function(wrap_pyfunction!(algorithms::norm_sf::norm_sf_py, m)?)?;
 
+    algorithms_module.add_function(wrap_pyfunction!(algorithms::rank_sums::rank_sums_py, m)?)?;
+    algorithms_module.add_function(wrap_pyfunction!(algorithms::rank_sums::rank_sums_2d_py, m)?)?;
+
     m.add_submodule(algorithms_module)?;
 
     Ok(())
