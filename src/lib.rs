@@ -21,6 +21,9 @@ fn scenicplus_core(py: Python, m: &PyModule) -> PyResult<()> {
     algorithms_module.add_function(wrap_pyfunction!(algorithms::arg_sort::arg_sort_u64_py, m)?)?;
     algorithms_module.add_function(wrap_pyfunction!(algorithms::arg_sort::arg_sort_f32_py, m)?)?;
     algorithms_module.add_function(wrap_pyfunction!(algorithms::arg_sort::arg_sort_f64_py, m)?)?;
+
+    algorithms_module.add_function(wrap_pyfunction!(algorithms::norm_sf::norm_sf_py, m)?)?;
+
     m.add_submodule(algorithms_module)?;
 
     Ok(())
