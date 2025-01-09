@@ -110,7 +110,7 @@ pub fn rank_sums_2d_py<'py>(
     py: Python<'py>,
     x: PyReadonlyArray2<'_, i64>,
     y: PyReadonlyArray2<'_, i64>,
-) -> (&'py PyArray1<f64>, &'py PyArray1<f64>) {
+) -> (Bound<'py, PyArray1<f64>>, Bound<'py, PyArray1<f64>>) {
     let mut b: Vec<(usize, f64, f64)> = x
         .as_array()
         .rows()

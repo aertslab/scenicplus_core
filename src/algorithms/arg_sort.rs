@@ -421,9 +421,9 @@ impl TryFrom<&str> for ArgSortMethod {
 ///
 pub fn arg_sort_i8_py<'py>(
     py: Python<'py>,
-    arr: PyReadonlyArray1<'_, i8>,
+    arr: PyReadonlyArray1<'py, i8>,
     method: &str,
-) -> &'py PyArray1<usize> {
+) -> Bound<'py, PyArray1<usize>> {
     let method = ArgSortMethod::try_from(method).unwrap_or(ArgSortMethod::Fastest);
 
     match method {
@@ -466,9 +466,9 @@ pub fn arg_sort_i8_py<'py>(
 ///
 pub fn arg_sort_i16_py<'py>(
     py: Python<'py>,
-    arr: PyReadonlyArray1<'_, i16>,
+    arr: PyReadonlyArray1<'py, i16>,
     method: &str,
-) -> &'py PyArray1<usize> {
+) -> Bound<'py, PyArray1<usize>> {
     let method = ArgSortMethod::try_from(method).unwrap_or(ArgSortMethod::Fastest);
 
     match method {
@@ -511,9 +511,9 @@ pub fn arg_sort_i16_py<'py>(
 ///
 pub fn arg_sort_i32_py<'py>(
     py: Python<'py>,
-    arr: PyReadonlyArray1<'_, i32>,
+    arr: PyReadonlyArray1<'py, i32>,
     method: &str,
-) -> &'py PyArray1<usize> {
+) -> Bound<'py, PyArray1<usize>> {
     let method = ArgSortMethod::try_from(method).unwrap_or(ArgSortMethod::Fastest);
 
     match method {
@@ -556,9 +556,9 @@ pub fn arg_sort_i32_py<'py>(
 ///
 pub fn arg_sort_i64_py<'py>(
     py: Python<'py>,
-    arr: PyReadonlyArray1<'_, i64>,
+    arr: PyReadonlyArray1<'py, i64>,
     method: &str,
-) -> &'py PyArray1<usize> {
+) -> Bound<'py, PyArray1<usize>> {
     let method = ArgSortMethod::try_from(method).unwrap_or(ArgSortMethod::Fastest);
 
     match method {
@@ -601,9 +601,9 @@ pub fn arg_sort_i64_py<'py>(
 ///
 pub fn arg_sort_u8_py<'py>(
     py: Python<'py>,
-    arr: PyReadonlyArray1<'_, u8>,
+    arr: PyReadonlyArray1<'py, u8>,
     method: &str,
-) -> &'py PyArray1<usize> {
+) -> Bound<'py, PyArray1<usize>> {
     let method = ArgSortMethod::try_from(method).unwrap_or(ArgSortMethod::Fastest);
 
     match method {
@@ -646,9 +646,9 @@ pub fn arg_sort_u8_py<'py>(
 ///
 pub fn arg_sort_u16_py<'py>(
     py: Python<'py>,
-    arr: PyReadonlyArray1<'_, u16>,
+    arr: PyReadonlyArray1<'py, u16>,
     method: &str,
-) -> &'py PyArray1<usize> {
+) -> Bound<'py, PyArray1<usize>> {
     let method = ArgSortMethod::try_from(method).unwrap_or(ArgSortMethod::Fastest);
 
     match method {
@@ -691,9 +691,9 @@ pub fn arg_sort_u16_py<'py>(
 ///
 pub fn arg_sort_u32_py<'py>(
     py: Python<'py>,
-    arr: PyReadonlyArray1<'_, u32>,
+    arr: PyReadonlyArray1<'py, u32>,
     method: &str,
-) -> &'py PyArray1<usize> {
+) -> Bound<'py, PyArray1<usize>> {
     let method = ArgSortMethod::try_from(method).unwrap_or(ArgSortMethod::Fastest);
 
     match method {
@@ -736,9 +736,9 @@ pub fn arg_sort_u32_py<'py>(
 ///
 pub fn arg_sort_u64_py<'py>(
     py: Python<'py>,
-    arr: PyReadonlyArray1<'_, u64>,
+    arr: PyReadonlyArray1<'py, u64>,
     method: &str,
-) -> &'py PyArray1<usize> {
+) -> Bound<'py, PyArray1<usize>> {
     let method = ArgSortMethod::try_from(method).unwrap_or(ArgSortMethod::Fastest);
 
     match method {
@@ -781,9 +781,9 @@ pub fn arg_sort_u64_py<'py>(
 ///
 pub fn arg_sort_f32_py<'py>(
     py: Python<'py>,
-    arr: PyReadonlyArray1<'_, f32>,
+    arr: PyReadonlyArray1<'py, f32>,
     method: &str,
-) -> &'py PyArray1<usize> {
+) -> Bound<'py, PyArray1<usize>> {
     let method = ArgSortMethod::try_from(method).unwrap_or(ArgSortMethod::Fastest);
 
     match method {
@@ -826,9 +826,9 @@ pub fn arg_sort_f32_py<'py>(
 ///
 pub fn arg_sort_f64_py<'py>(
     py: Python<'py>,
-    arr: PyReadonlyArray1<'_, f64>,
+    arr: PyReadonlyArray1<'py, f64>,
     method: &str,
-) -> &'py PyArray1<usize> {
+) -> Bound<'py, PyArray1<usize>> {
     let method = ArgSortMethod::try_from(method).unwrap_or(ArgSortMethod::Fastest);
 
     match method {

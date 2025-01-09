@@ -11,14 +11,17 @@ name = "scenicplus_core"
 crate-type = ["cdylib"]
 
 [dependencies]
-numpy = "0.19"
-rand = "0.8.4"
-rayon = "1.8"
-statrs = "0.16"
+num-traits = "0.2"
+numpy = "0.23"
+rand = "0.8.5"
+rayon = "1.10"
+statrs = "0.18"
 voracious_radix_sort = "1.2"
+funty = "2.0.0"
 
 [dependencies.pyo3]
-version = "0.19.0"
+#version = "0.23.3"
+version = "0.23"
 # "abi3-py38" tells pyo3 (and maturin) to build using the stable ABI with minimum Python version 3.8
 features = ["abi3-py38"]
 
