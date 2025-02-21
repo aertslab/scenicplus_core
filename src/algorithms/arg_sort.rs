@@ -1,13 +1,15 @@
 use numpy::{IntoPyArray, PyArray1, PyReadonlyArray1};
 use pyo3::prelude::*;
 use std::cmp::Ordering;
+use std::fmt;
 use voracious_radix_sort::{RadixSort, Radixable};
 
-// We need a struct.
-// We want, for example, to sort these structs by the key: "value".
-// This struct must implement the Copy and Clone traits, we can just derive them.
-// For the multithread version the struct must implement de `Send` and `Sync` traits
-// too, which are by default for primitive types.
+// Define a struct to store indexed values for sorting operations.
+// This struct enables sorting based on a specified key, such as the `value` field.
+//
+// The struct derives the `Copy` and `Clone` traits to allow efficient duplication and copying.
+// Additionally, for use in a multithreaded context, it must implement the `Send` and `Sync` traits,
+// which are automatically satisfied for primitive types.
 #[derive(Copy, Clone, Debug)]
 pub struct ArgSortRadix<T> {
     idx: usize,
@@ -130,7 +132,7 @@ impl ArgSort<i8> for &[i8] {
     }
 
     fn arg_sort_fastest(&self) -> Vec<usize> {
-        match self.len() >= 2000 {
+        match self.len() >= 400 {
             false => self.arg_sort(),
             true => self.arg_sort_radix(),
         }
@@ -155,7 +157,7 @@ impl ArgSort<i16> for &[i16] {
     }
 
     fn arg_sort_fastest(&self) -> Vec<usize> {
-        match self.len() >= 2000 {
+        match self.len() >= 1300 {
             false => self.arg_sort(),
             true => self.arg_sort_radix(),
         }
@@ -180,7 +182,7 @@ impl ArgSort<i32> for &[i32] {
     }
 
     fn arg_sort_fastest(&self) -> Vec<usize> {
-        match self.len() >= 2000 {
+        match self.len() >= 2500 {
             false => self.arg_sort(),
             true => self.arg_sort_radix(),
         }
@@ -205,14 +207,13 @@ impl ArgSort<i64> for &[i64] {
     }
 
     fn arg_sort_fastest(&self) -> Vec<usize> {
-        // For some reason radix sort is only faster from 9000 elements for i64
-        // and not from 2000 elements like for other primitives.
-        match self.len() >= 9000 {
+        match self.len() >= 10000 {
             false => self.arg_sort(),
             true => self.arg_sort_radix(),
         }
     }
 }
+
 impl ArgSort<u8> for &[u8] {
     fn arg_sort(&self) -> Vec<usize> {
         let mut indices = (0..self.len()).collect::<Vec<_>>();
@@ -231,7 +232,7 @@ impl ArgSort<u8> for &[u8] {
     }
 
     fn arg_sort_fastest(&self) -> Vec<usize> {
-        match self.len() >= 2000 {
+        match self.len() >= 400 {
             false => self.arg_sort(),
             true => self.arg_sort_radix(),
         }
@@ -256,7 +257,7 @@ impl ArgSort<u16> for &[u16] {
     }
 
     fn arg_sort_fastest(&self) -> Vec<usize> {
-        match self.len() >= 2000 {
+        match self.len() >= 1200 {
             false => self.arg_sort(),
             true => self.arg_sort_radix(),
         }
@@ -281,7 +282,7 @@ impl ArgSort<u32> for &[u32] {
     }
 
     fn arg_sort_fastest(&self) -> Vec<usize> {
-        match self.len() >= 2000 {
+        match self.len() >= 1200 {
             false => self.arg_sort(),
             true => self.arg_sort_radix(),
         }
@@ -306,7 +307,7 @@ impl ArgSort<u64> for &[u64] {
     }
 
     fn arg_sort_fastest(&self) -> Vec<usize> {
-        match self.len() >= 2000 {
+        match self.len() >= 1200 {
             false => self.arg_sort(),
             true => self.arg_sort_radix(),
         }
@@ -364,7 +365,7 @@ impl ArgSort<f64> for &[f64] {
     }
 
     fn arg_sort_fastest(&self) -> Vec<usize> {
-        match self.len() >= 2000 {
+        match self.len() >= 5000 {
             false => self.arg_sort(),
             true => self.arg_sort_radix(),
         }
@@ -377,7 +378,7 @@ enum ArgSortMethod {
     Radix,
     Fastest,
 }
-use std::fmt;
+
 impl fmt::Display for ArgSortMethod {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         match *self {
@@ -392,8 +393,6 @@ impl TryFrom<&str> for ArgSortMethod {
     type Error = ();
 
     fn try_from(method: &str) -> Result<Self, Self::Error> {
-        //    Self::from_str(input)
-        //}
         match method {
             "standard" => Ok(ArgSortMethod::Standard),
             "radix" => Ok(ArgSortMethod::Radix),
@@ -414,7 +413,7 @@ impl TryFrom<&str> for ArgSortMethod {
 /// Parameters
 /// ----------
 /// arr
-///     1D continous numpy array.
+///     1D continuous numpy array.
 /// method
 ///     Method to use for sorting: "standard", "radix", "fastest"
 ///     (uses standard or radix sort depending on the size).
@@ -459,7 +458,7 @@ pub fn arg_sort_i8_py<'py>(
 /// Parameters
 /// ----------
 /// arr
-///     1D continous numpy array.
+///     1D continuous numpy array.
 /// method
 ///     Method to use for sorting: "standard", "radix", "fastest"
 ///     (uses standard or radix sort depending on the size).
@@ -504,7 +503,7 @@ pub fn arg_sort_i16_py<'py>(
 /// Parameters
 /// ----------
 /// arr
-///     1D continous numpy array.
+///     1D continuous numpy array.
 /// method
 ///     Method to use for sorting: "standard", "radix", "fastest"
 ///     (uses standard or radix sort depending on the size).
@@ -549,7 +548,7 @@ pub fn arg_sort_i32_py<'py>(
 /// Parameters
 /// ----------
 /// arr
-///     1D continous numpy array.
+///     1D continuous numpy array.
 /// method
 ///     Method to use for sorting: "standard", "radix", "fastest"
 ///     (uses standard or radix sort depending on the size).
@@ -594,7 +593,7 @@ pub fn arg_sort_i64_py<'py>(
 /// Parameters
 /// ----------
 /// arr
-///     1D continous numpy array.
+///     1D continuous numpy array.
 /// method
 ///     Method to use for sorting: "standard", "radix", "fastest"
 ///     (uses standard or radix sort depending on the size).
@@ -639,7 +638,7 @@ pub fn arg_sort_u8_py<'py>(
 /// Parameters
 /// ----------
 /// arr
-///     1D continous numpy array.
+///     1D continuous numpy array.
 /// method
 ///     Method to use for sorting: "standard", "radix", "fastest"
 ///     (uses standard or radix sort depending on the size).
@@ -684,7 +683,7 @@ pub fn arg_sort_u16_py<'py>(
 /// Parameters
 /// ----------
 /// arr
-///     1D continous numpy array.
+///     1D continuous numpy array.
 /// method
 ///     Method to use for sorting: "standard", "radix", "fastest"
 ///     (uses standard or radix sort depending on the size).
@@ -729,7 +728,7 @@ pub fn arg_sort_u32_py<'py>(
 /// Parameters
 /// ----------
 /// arr
-///     1D continous numpy array.
+///     1D continuous numpy array.
 /// method
 ///     Method to use for sorting: "standard", "radix", "fastest"
 ///     (uses standard or radix sort depending on the size).
@@ -774,7 +773,7 @@ pub fn arg_sort_u64_py<'py>(
 /// Parameters
 /// ----------
 /// arr
-///     1D continous numpy array.
+///     1D continuous numpy array.
 /// method
 ///     Method to use for sorting: "standard", "radix", "fastest"
 ///     (uses standard or radix sort depending on the size).
@@ -819,7 +818,7 @@ pub fn arg_sort_f32_py<'py>(
 /// Parameters
 /// ----------
 /// arr
-///     1D continous numpy array.
+///     1D continuous numpy array.
 /// method
 ///     Method to use for sorting: "standard", "radix", "fastest"
 ///     (uses standard or radix sort depending on the size).
