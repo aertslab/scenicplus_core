@@ -13,43 +13,43 @@ fn scenicplus_core(py: Python<'_>, module: &Bound<'_, PyModule>) -> PyResult<()>
     let algorithms_submodule = PyModule::new(py, "algorithms")?;
 
     algorithms_submodule.add_function(wrap_pyfunction!(
-        algorithms::arg_sort::arg_sort_i8_py,
+        algorithms::arg_sort::arg_sort_1d_i8_py,
         module
     )?)?;
     algorithms_submodule.add_function(wrap_pyfunction!(
-        algorithms::arg_sort::arg_sort_i16_py,
+        algorithms::arg_sort::arg_sort_1d_i16_py,
         module
     )?)?;
     algorithms_submodule.add_function(wrap_pyfunction!(
-        algorithms::arg_sort::arg_sort_i32_py,
+        algorithms::arg_sort::arg_sort_1d_i32_py,
         module
     )?)?;
     algorithms_submodule.add_function(wrap_pyfunction!(
-        algorithms::arg_sort::arg_sort_i64_py,
+        algorithms::arg_sort::arg_sort_1d_i64_py,
         module
     )?)?;
     algorithms_submodule.add_function(wrap_pyfunction!(
-        algorithms::arg_sort::arg_sort_u8_py,
+        algorithms::arg_sort::arg_sort_1d_u8_py,
         module
     )?)?;
     algorithms_submodule.add_function(wrap_pyfunction!(
-        algorithms::arg_sort::arg_sort_u16_py,
+        algorithms::arg_sort::arg_sort_1d_u16_py,
         module
     )?)?;
     algorithms_submodule.add_function(wrap_pyfunction!(
-        algorithms::arg_sort::arg_sort_u32_py,
+        algorithms::arg_sort::arg_sort_1d_u32_py,
         module
     )?)?;
     algorithms_submodule.add_function(wrap_pyfunction!(
-        algorithms::arg_sort::arg_sort_u64_py,
+        algorithms::arg_sort::arg_sort_1d_u64_py,
         module
     )?)?;
     algorithms_submodule.add_function(wrap_pyfunction!(
-        algorithms::arg_sort::arg_sort_f32_py,
+        algorithms::arg_sort::arg_sort_1d_f32_py,
         module
     )?)?;
     algorithms_submodule.add_function(wrap_pyfunction!(
-        algorithms::arg_sort::arg_sort_f64_py,
+        algorithms::arg_sort::arg_sort_1d_f64_py,
         module
     )?)?;
 

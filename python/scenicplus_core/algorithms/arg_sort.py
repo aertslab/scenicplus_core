@@ -3,16 +3,16 @@ import numpy as np
 from scenicplus_core.scenicplus_core import algorithms as spc_algorithms
 
 dtype_to_arg_sort_func = {
-    np.int8: spc_algorithms.arg_sort_i8,
-    np.int16: spc_algorithms.arg_sort_i16,
-    np.int32: spc_algorithms.arg_sort_i32,
-    np.int64: spc_algorithms.arg_sort_i64,
-    np.uint8: spc_algorithms.arg_sort_u8,
-    np.uint16: spc_algorithms.arg_sort_u16,
-    np.uint32: spc_algorithms.arg_sort_u32,
-    np.uint64: spc_algorithms.arg_sort_u64,
-    np.float32: spc_algorithms.arg_sort_f32,
-    np.float64: spc_algorithms.arg_sort_f64,
+    np.int8: spc_algorithms.arg_sort_1d_i8,
+    np.int16: spc_algorithms.arg_sort_1d_i16,
+    np.int32: spc_algorithms.arg_sort_1d_i32,
+    np.int64: spc_algorithms.arg_sort_1d_i64,
+    np.uint8: spc_algorithms.arg_sort_1d_u8,
+    np.uint16: spc_algorithms.arg_sort_1d_u16,
+    np.uint32: spc_algorithms.arg_sort_1d_u32,
+    np.uint64: spc_algorithms.arg_sort_1d_u64,
+    np.float32: spc_algorithms.arg_sort_1d_f32,
+    np.float64: spc_algorithms.arg_sort_1d_f64,
 }
 
 
@@ -27,7 +27,7 @@ def arg_sort(arr: np.ndarray, method: str | None) -> np.ndarray:
     Parameters
     ----------
     arr
-        1D continous numpy array.
+        1D continuous numpy array.
     method
         Method to use for sorting: "standard", "radix", "fastest"
         (uses standard or radix sort depending on the size).

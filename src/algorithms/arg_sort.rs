@@ -403,7 +403,7 @@ impl TryFrom<&str> for ArgSortMethod {
 }
 
 #[pyfunction]
-#[pyo3(name = "arg_sort_i8")]
+#[pyo3(name = "arg_sort_1d_i8")]
 /// Returns the indices that would sort an 1D int8 array.
 ///
 /// Perform an indirect sort using the algorithm specified by the `method` keyword.
@@ -418,7 +418,7 @@ impl TryFrom<&str> for ArgSortMethod {
 ///     Method to use for sorting: "standard", "radix", "fastest"
 ///     (uses standard or radix sort depending on the size).
 ///
-pub fn arg_sort_i8_py<'py>(
+pub fn arg_sort_1d_i8_py<'py>(
     py: Python<'py>,
     arr: PyReadonlyArray1<'py, i8>,
     method: &str,
@@ -448,7 +448,7 @@ pub fn arg_sort_i8_py<'py>(
 }
 
 #[pyfunction]
-#[pyo3(name = "arg_sort_i16")]
+#[pyo3(name = "arg_sort_1d_i16")]
 /// Returns the indices that would sort an 1D int16 array.
 ///
 /// Perform an indirect sort using the algorithm specified by the `method` keyword.
@@ -463,7 +463,7 @@ pub fn arg_sort_i8_py<'py>(
 ///     Method to use for sorting: "standard", "radix", "fastest"
 ///     (uses standard or radix sort depending on the size).
 ///
-pub fn arg_sort_i16_py<'py>(
+pub fn arg_sort_1d_i16_py<'py>(
     py: Python<'py>,
     arr: PyReadonlyArray1<'py, i16>,
     method: &str,
@@ -493,7 +493,7 @@ pub fn arg_sort_i16_py<'py>(
 }
 
 #[pyfunction]
-#[pyo3(name = "arg_sort_i32")]
+#[pyo3(name = "arg_sort_1d_i32")]
 /// Returns the indices that would sort an 1D int32 array.
 ///
 /// Perform an indirect sort using the algorithm specified by the `method` keyword.
@@ -508,7 +508,7 @@ pub fn arg_sort_i16_py<'py>(
 ///     Method to use for sorting: "standard", "radix", "fastest"
 ///     (uses standard or radix sort depending on the size).
 ///
-pub fn arg_sort_i32_py<'py>(
+pub fn arg_sort_1d_i32_py<'py>(
     py: Python<'py>,
     arr: PyReadonlyArray1<'py, i32>,
     method: &str,
@@ -538,7 +538,7 @@ pub fn arg_sort_i32_py<'py>(
 }
 
 #[pyfunction]
-#[pyo3(name = "arg_sort_i64")]
+#[pyo3(name = "arg_sort_1d_i64")]
 /// Returns the indices that would sort an 1D int64 array.
 ///
 /// Perform an indirect sort using the algorithm specified by the `method` keyword.
@@ -553,7 +553,7 @@ pub fn arg_sort_i32_py<'py>(
 ///     Method to use for sorting: "standard", "radix", "fastest"
 ///     (uses standard or radix sort depending on the size).
 ///
-pub fn arg_sort_i64_py<'py>(
+pub fn arg_sort_1d_i64_py<'py>(
     py: Python<'py>,
     arr: PyReadonlyArray1<'py, i64>,
     method: &str,
@@ -583,7 +583,7 @@ pub fn arg_sort_i64_py<'py>(
 }
 
 #[pyfunction]
-#[pyo3(name = "arg_sort_u8")]
+#[pyo3(name = "arg_sort_1d_u8")]
 /// Returns the indices that would sort an 1D uint8 array.
 ///
 /// Perform an indirect sort using the algorithm specified by the `method` keyword.
@@ -598,7 +598,7 @@ pub fn arg_sort_i64_py<'py>(
 ///     Method to use for sorting: "standard", "radix", "fastest"
 ///     (uses standard or radix sort depending on the size).
 ///
-pub fn arg_sort_u8_py<'py>(
+pub fn arg_sort_1d_u8_py<'py>(
     py: Python<'py>,
     arr: PyReadonlyArray1<'py, u8>,
     method: &str,
@@ -628,7 +628,7 @@ pub fn arg_sort_u8_py<'py>(
 }
 
 #[pyfunction]
-#[pyo3(name = "arg_sort_u16")]
+#[pyo3(name = "arg_sort_1d_u16")]
 /// Returns the indices that would sort an 1D uint16 array.
 ///
 /// Perform an indirect sort using the algorithm specified by the `method` keyword.
@@ -643,7 +643,7 @@ pub fn arg_sort_u8_py<'py>(
 ///     Method to use for sorting: "standard", "radix", "fastest"
 ///     (uses standard or radix sort depending on the size).
 ///
-pub fn arg_sort_u16_py<'py>(
+pub fn arg_sort_1d_u16_py<'py>(
     py: Python<'py>,
     arr: PyReadonlyArray1<'py, u16>,
     method: &str,
@@ -673,7 +673,7 @@ pub fn arg_sort_u16_py<'py>(
 }
 
 #[pyfunction]
-#[pyo3(name = "arg_sort_u32")]
+#[pyo3(name = "arg_sort_1d_u32")]
 /// Returns the indices that would sort an 1D uint32 array.
 ///
 /// Perform an indirect sort using the algorithm specified by the `method` keyword.
@@ -688,7 +688,7 @@ pub fn arg_sort_u16_py<'py>(
 ///     Method to use for sorting: "standard", "radix", "fastest"
 ///     (uses standard or radix sort depending on the size).
 ///
-pub fn arg_sort_u32_py<'py>(
+pub fn arg_sort_1d_u32_py<'py>(
     py: Python<'py>,
     arr: PyReadonlyArray1<'py, u32>,
     method: &str,
@@ -718,7 +718,7 @@ pub fn arg_sort_u32_py<'py>(
 }
 
 #[pyfunction]
-#[pyo3(name = "arg_sort_u64")]
+#[pyo3(name = "arg_sort_1d_u64")]
 /// Returns the indices that would sort an 1D uint64 array.
 ///
 /// Perform an indirect sort using the algorithm specified by the `method` keyword.
@@ -733,7 +733,7 @@ pub fn arg_sort_u32_py<'py>(
 ///     Method to use for sorting: "standard", "radix", "fastest"
 ///     (uses standard or radix sort depending on the size).
 ///
-pub fn arg_sort_u64_py<'py>(
+pub fn arg_sort_1d_u64_py<'py>(
     py: Python<'py>,
     arr: PyReadonlyArray1<'py, u64>,
     method: &str,
@@ -763,7 +763,7 @@ pub fn arg_sort_u64_py<'py>(
 }
 
 #[pyfunction]
-#[pyo3(name = "arg_sort_f32")]
+#[pyo3(name = "arg_sort_1d_f32")]
 /// Returns the indices that would sort an 1D float32 array.
 ///
 /// Perform an indirect sort using the algorithm specified by the `method` keyword.
@@ -778,7 +778,7 @@ pub fn arg_sort_u64_py<'py>(
 ///     Method to use for sorting: "standard", "radix", "fastest"
 ///     (uses standard or radix sort depending on the size).
 ///
-pub fn arg_sort_f32_py<'py>(
+pub fn arg_sort_1d_f32_py<'py>(
     py: Python<'py>,
     arr: PyReadonlyArray1<'py, f32>,
     method: &str,
@@ -808,7 +808,7 @@ pub fn arg_sort_f32_py<'py>(
 }
 
 #[pyfunction]
-#[pyo3(name = "arg_sort_f64")]
+#[pyo3(name = "arg_sort_1d_f64")]
 /// Returns the indices that would sort an 1D float64 array.
 ///
 /// Perform an indirect sort using the algorithm specified by the `method` keyword.
@@ -823,7 +823,7 @@ pub fn arg_sort_f32_py<'py>(
 ///     Method to use for sorting: "standard", "radix", "fastest"
 ///     (uses standard or radix sort depending on the size).
 ///
-pub fn arg_sort_f64_py<'py>(
+pub fn arg_sort_1d_f64_py<'py>(
     py: Python<'py>,
     arr: PyReadonlyArray1<'py, f64>,
     method: &str,
