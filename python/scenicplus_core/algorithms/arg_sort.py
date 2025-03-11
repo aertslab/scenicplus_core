@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import numpy as np
 
 from scenicplus_core.scenicplus_core import algorithms as spc_algorithms
@@ -50,7 +52,7 @@ def arg_sort(arr: np.ndarray, method: str | None) -> np.ndarray:
     arg_sort_func = dtype_to_arg_sort_func.get(arr.dtype.type)
 
     if arg_sort_func:
-        return arg_sort_func(arr, method)
+        return arg_sort_func(np.ascontiguousarray(arr), method)
 
     raise ValueError(
         f'Unsupported dtype "{arr.dtype}". Only np.int8-64, np.uint8-64 and np.float32-64 are supported.'
