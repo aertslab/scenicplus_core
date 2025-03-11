@@ -54,6 +54,27 @@ fn scenicplus_core(py: Python<'_>, module: &Bound<'_, PyModule>) -> PyResult<()>
     )?)?;
 
     algorithms_submodule
+        .add_function(wrap_pyfunction!(algorithms::sort::sort_1d_i8_py, module)?)?;
+    algorithms_submodule
+        .add_function(wrap_pyfunction!(algorithms::sort::sort_1d_i16_py, module)?)?;
+    algorithms_submodule
+        .add_function(wrap_pyfunction!(algorithms::sort::sort_1d_i32_py, module)?)?;
+    algorithms_submodule
+        .add_function(wrap_pyfunction!(algorithms::sort::sort_1d_i64_py, module)?)?;
+    algorithms_submodule
+        .add_function(wrap_pyfunction!(algorithms::sort::sort_1d_u8_py, module)?)?;
+    algorithms_submodule
+        .add_function(wrap_pyfunction!(algorithms::sort::sort_1d_u16_py, module)?)?;
+    algorithms_submodule
+        .add_function(wrap_pyfunction!(algorithms::sort::sort_1d_u32_py, module)?)?;
+    algorithms_submodule
+        .add_function(wrap_pyfunction!(algorithms::sort::sort_1d_u64_py, module)?)?;
+    algorithms_submodule
+        .add_function(wrap_pyfunction!(algorithms::sort::sort_1d_f32_py, module)?)?;
+    algorithms_submodule
+        .add_function(wrap_pyfunction!(algorithms::sort::sort_1d_f64_py, module)?)?;
+
+    algorithms_submodule
         .add_function(wrap_pyfunction!(algorithms::norm_sf::norm_sf_py, module)?)?;
 
     algorithms_submodule.add_function(wrap_pyfunction!(
