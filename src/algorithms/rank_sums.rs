@@ -9,12 +9,13 @@ use pyo3::Python;
 use crate::algorithms::{arg_sort::ArgSort, norm_sf::NormSf};
 
 /// Assign ranks to data, where for tied values the average ranking that
-/// would have been assigned to all the tied values is assigned to each value.
+/// would have been assigned to all the tied values is assigned to each value
+/// in the group. Return the sum of the ranks at position `idx`.
 ///
-/// Slices which contain NaNs are not support
+/// Slices which contain NaNs are not supported.
 ///
 /// Loosely based on `scipy.stats.rankdata`.
-fn rank_data_avg(arr: &[i64]) -> Vec<f64> {
+fn rank_data_avg_at_idx(arr: &[u32], idx: usize) -> f64 {
     let len = arr.len();
     let sort_idx = arr.arg_sort_fastest();
     let mut count = 0;
@@ -28,6 +29,7 @@ fn rank_data_avg(arr: &[i64]) -> Vec<f64> {
     });
 
     let sorted = unsafe { sort_idx.iter().map(|i| *arr.get_unchecked(*i)) };
+
     let not_consecutive_same_slice1 = sorted.clone().skip(1);
     let not_consecutive_same_slice2 = sorted.take(len - 1);
 
@@ -56,13 +58,12 @@ fn rank_data_avg(arr: &[i64]) -> Vec<f64> {
 
     let dense = inv.iter().map(|i| *dense_tmp.get(*i).unwrap());
 
-    let mut rank_sums_avg: Vec<f64> = Vec::with_capacity(dense.len());
-    rank_sums_avg.extend(dense.map(|i| {
+    let rank_sums_avg = dense.map(|i| {
         let x = unsafe { *count.get_unchecked(i) } as f64;
         let y = unsafe { *count.get_unchecked(i - 1) } as f64 + 1.0;
         (x + y) * 0.5
-    }));
-    rank_sums_avg
+    });
+    rank_sums_avg.take(idx).sum()
 }
 
 /// Compute the Wilcoxon rank-sum statistic for two samples.
@@ -81,7 +82,7 @@ fn rank_sums(x: &[i64], y: &[i64]) -> (f64, f64) {
     let n1 = x.len();
     let n2 = y.len();
     let all_data = [x, y].concat();
-    let s: f64 = rank_data_avg(&all_data).into_iter().take(n1).sum();
+    let s = rank_data_avg_at_idx(&all_data, n1);
     let n1 = n1 as f64;
     let n2 = n2 as f64;
     let expected = n1 * (n1 + n2 + 1.0) / 2.0;
