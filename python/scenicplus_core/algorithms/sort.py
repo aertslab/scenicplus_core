@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import numpy as np
+import numpy.typing as npt
 
 from scenicplus_core.scenicplus_core import algorithms as spc_algorithms
 
@@ -18,7 +19,18 @@ dtype_to_sort_func = {
 }
 
 
-def sort(arr: np.ndarray) -> np.ndarray:
+def sort(
+    arr: npt.NDArray[np.int8]
+    | npt.NDArray[np.int16]
+    | npt.NDArray[np.int32]
+    | npt.NDArray[np.int64]
+    | npt.NDArray[np.uint8]
+    | npt.NDArray[np.uint16]
+    | npt.NDArray[np.uint32]
+    | npt.NDArray[np.uint64]
+    | npt.NDArray[np.float32]
+    | npt.NDArray[np.float64],
+) -> npt.NDArray:
     """
     Sort an 1D array.
 
