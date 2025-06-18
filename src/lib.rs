@@ -86,6 +86,11 @@ fn scenicplus_core(py: Python<'_>, module: &Bound<'_, PyModule>) -> PyResult<()>
         module
     )?)?;
 
+    algorithms_submodule.add_function(wrap_pyfunction!(
+        algorithms::nonzero_rows::get_nonzero_row_indices_py,
+        module
+    )?)?;
+
     module.add_submodule(&algorithms_submodule)?;
 
     Ok(())
