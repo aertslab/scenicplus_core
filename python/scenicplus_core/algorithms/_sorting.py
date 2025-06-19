@@ -43,6 +43,7 @@ def arg_sort(
     | npt.NDArray[np.uint64]
     | npt.NDArray[np.float32]
     | npt.NDArray[np.float64],
+    reverse: bool = False,
     method: str | None = None,
 ) -> npt.NDArray[np.uint64]:
     """
@@ -56,6 +57,8 @@ def arg_sort(
     ----------
     arr
         1D continuous numpy array.
+    reverse
+        If `True`, sort in descending order. Default: False (ascending order).
     method
         Method to use for sorting: "standard", "radix", "fastest"
         (uses standard or radix sort depending on the size).
@@ -78,7 +81,7 @@ def arg_sort(
     arg_sort_func = dtype_to_arg_sort_func.get(arr.dtype.type)
 
     if arg_sort_func:
-        return arg_sort_func(np.ascontiguousarray(arr), method)
+        return arg_sort_func(np.ascontiguousarray(arr), reverse, method)
 
     raise ValueError(
         f'Unsupported dtype "{arr.dtype}". Only np.int8-64, np.uint8-64 and np.float32-64 are supported.'
@@ -96,6 +99,7 @@ def sort(
     | npt.NDArray[np.uint64]
     | npt.NDArray[np.float32]
     | npt.NDArray[np.float64],
+    reverse: bool = False,
 ) -> npt.NDArray:
     """
     Sort an 1D array.
@@ -104,6 +108,8 @@ def sort(
     ----------
     arr
         1D continuous numpy array.
+    reverse
+        If `True`, sort in descending order. Default: False (ascending order).
 
     """
     if not isinstance(arr, np.ndarray):
@@ -114,7 +120,7 @@ def sort(
     sort_func = dtype_to_sort_func.get(arr.dtype.type)
 
     if sort_func:
-        return sort_func(np.ascontiguousarray(arr))
+        return sort_func(np.ascontiguousarray(arr), reverse)
 
     raise ValueError(
         f'Unsupported dtype "{arr.dtype}". Only np.int8-64, np.uint8-64 and np.float32-64 are supported.'

@@ -414,6 +414,8 @@ impl TryFrom<&str> for ArgSortMethod {
 /// ----------
 /// arr
 ///     1D continuous numpy array.
+/// reverse
+///     If `True`, sort in descending order.
 /// method
 ///     Method to use for sorting: "standard", "radix", "fastest"
 ///     (uses standard or radix sort depending on the size).
@@ -421,30 +423,34 @@ impl TryFrom<&str> for ArgSortMethod {
 pub fn arg_sort_1d_i8_py<'py>(
     py: Python<'py>,
     arr: PyReadonlyArray1<'py, i8>,
+    reverse: bool,
     method: &str,
 ) -> Bound<'py, PyArray1<usize>> {
     let method = ArgSortMethod::try_from(method).unwrap_or(ArgSortMethod::Fastest);
 
-    match method {
+    let mut arg_sorted = match method {
         ArgSortMethod::Standard => arr
             .as_array()
             .as_slice()
             .unwrap()
-            .arg_sort()
-            .into_pyarray(py),
+            .arg_sort(),
         ArgSortMethod::Radix => arr
             .as_array()
             .as_slice()
             .unwrap()
-            .arg_sort_radix()
-            .into_pyarray(py),
+            .arg_sort_radix(),
         ArgSortMethod::Fastest => arr
             .as_array()
             .as_slice()
             .unwrap()
-            .arg_sort_fastest()
-            .into_pyarray(py),
-    }
+            .arg_sort_fastest(),
+    };
+
+    if reverse {
+       arg_sorted.reverse();
+    };
+
+    arg_sorted.into_pyarray(py)
 }
 
 #[pyfunction]
@@ -459,6 +465,8 @@ pub fn arg_sort_1d_i8_py<'py>(
 /// ----------
 /// arr
 ///     1D continuous numpy array.
+/// reverse
+///     If `True`, sort in descending order.
 /// method
 ///     Method to use for sorting: "standard", "radix", "fastest"
 ///     (uses standard or radix sort depending on the size).
@@ -466,30 +474,34 @@ pub fn arg_sort_1d_i8_py<'py>(
 pub fn arg_sort_1d_i16_py<'py>(
     py: Python<'py>,
     arr: PyReadonlyArray1<'py, i16>,
+    reverse: bool,
     method: &str,
 ) -> Bound<'py, PyArray1<usize>> {
     let method = ArgSortMethod::try_from(method).unwrap_or(ArgSortMethod::Fastest);
 
-    match method {
+    let mut arg_sorted = match method {
         ArgSortMethod::Standard => arr
             .as_array()
             .as_slice()
             .unwrap()
-            .arg_sort()
-            .into_pyarray(py),
+            .arg_sort(),
         ArgSortMethod::Radix => arr
             .as_array()
             .as_slice()
             .unwrap()
-            .arg_sort_radix()
-            .into_pyarray(py),
+            .arg_sort_radix(),
         ArgSortMethod::Fastest => arr
             .as_array()
             .as_slice()
             .unwrap()
-            .arg_sort_fastest()
-            .into_pyarray(py),
-    }
+            .arg_sort_fastest(),
+    };
+
+    if reverse {
+       arg_sorted.reverse();
+    };
+
+    arg_sorted.into_pyarray(py)
 }
 
 #[pyfunction]
@@ -504,6 +516,8 @@ pub fn arg_sort_1d_i16_py<'py>(
 /// ----------
 /// arr
 ///     1D continuous numpy array.
+/// reverse
+///     If `True`, sort in descending order.
 /// method
 ///     Method to use for sorting: "standard", "radix", "fastest"
 ///     (uses standard or radix sort depending on the size).
@@ -511,30 +525,34 @@ pub fn arg_sort_1d_i16_py<'py>(
 pub fn arg_sort_1d_i32_py<'py>(
     py: Python<'py>,
     arr: PyReadonlyArray1<'py, i32>,
+    reverse: bool,
     method: &str,
 ) -> Bound<'py, PyArray1<usize>> {
     let method = ArgSortMethod::try_from(method).unwrap_or(ArgSortMethod::Fastest);
 
-    match method {
+    let mut arg_sorted = match method {
         ArgSortMethod::Standard => arr
             .as_array()
             .as_slice()
             .unwrap()
-            .arg_sort()
-            .into_pyarray(py),
+            .arg_sort(),
         ArgSortMethod::Radix => arr
             .as_array()
             .as_slice()
             .unwrap()
-            .arg_sort_radix()
-            .into_pyarray(py),
+            .arg_sort_radix(),
         ArgSortMethod::Fastest => arr
             .as_array()
             .as_slice()
             .unwrap()
-            .arg_sort_fastest()
-            .into_pyarray(py),
-    }
+            .arg_sort_fastest(),
+    };
+
+    if reverse {
+       arg_sorted.reverse();
+    };
+
+    arg_sorted.into_pyarray(py)
 }
 
 #[pyfunction]
@@ -549,6 +567,8 @@ pub fn arg_sort_1d_i32_py<'py>(
 /// ----------
 /// arr
 ///     1D continuous numpy array.
+/// reverse
+///     If `True`, sort in descending order.
 /// method
 ///     Method to use for sorting: "standard", "radix", "fastest"
 ///     (uses standard or radix sort depending on the size).
@@ -556,30 +576,34 @@ pub fn arg_sort_1d_i32_py<'py>(
 pub fn arg_sort_1d_i64_py<'py>(
     py: Python<'py>,
     arr: PyReadonlyArray1<'py, i64>,
+    reverse: bool,
     method: &str,
 ) -> Bound<'py, PyArray1<usize>> {
     let method = ArgSortMethod::try_from(method).unwrap_or(ArgSortMethod::Fastest);
 
-    match method {
+    let mut arg_sorted = match method {
         ArgSortMethod::Standard => arr
             .as_array()
             .as_slice()
             .unwrap()
-            .arg_sort()
-            .into_pyarray(py),
+            .arg_sort(),
         ArgSortMethod::Radix => arr
             .as_array()
             .as_slice()
             .unwrap()
-            .arg_sort_radix()
-            .into_pyarray(py),
+            .arg_sort_radix(),
         ArgSortMethod::Fastest => arr
             .as_array()
             .as_slice()
             .unwrap()
-            .arg_sort_fastest()
-            .into_pyarray(py),
-    }
+            .arg_sort_fastest(),
+    };
+
+    if reverse {
+       arg_sorted.reverse();
+    };
+
+    arg_sorted.into_pyarray(py)
 }
 
 #[pyfunction]
@@ -594,6 +618,8 @@ pub fn arg_sort_1d_i64_py<'py>(
 /// ----------
 /// arr
 ///     1D continuous numpy array.
+/// reverse
+///     If `True`, sort in descending order.
 /// method
 ///     Method to use for sorting: "standard", "radix", "fastest"
 ///     (uses standard or radix sort depending on the size).
@@ -601,30 +627,34 @@ pub fn arg_sort_1d_i64_py<'py>(
 pub fn arg_sort_1d_u8_py<'py>(
     py: Python<'py>,
     arr: PyReadonlyArray1<'py, u8>,
+    reverse: bool,
     method: &str,
 ) -> Bound<'py, PyArray1<usize>> {
     let method = ArgSortMethod::try_from(method).unwrap_or(ArgSortMethod::Fastest);
 
-    match method {
+    let mut arg_sorted = match method {
         ArgSortMethod::Standard => arr
             .as_array()
             .as_slice()
             .unwrap()
-            .arg_sort()
-            .into_pyarray(py),
+            .arg_sort(),
         ArgSortMethod::Radix => arr
             .as_array()
             .as_slice()
             .unwrap()
-            .arg_sort_radix()
-            .into_pyarray(py),
+            .arg_sort_radix(),
         ArgSortMethod::Fastest => arr
             .as_array()
             .as_slice()
             .unwrap()
-            .arg_sort_fastest()
-            .into_pyarray(py),
-    }
+            .arg_sort_fastest(),
+    };
+
+    if reverse {
+       arg_sorted.reverse();
+    };
+
+    arg_sorted.into_pyarray(py)
 }
 
 #[pyfunction]
@@ -639,6 +669,8 @@ pub fn arg_sort_1d_u8_py<'py>(
 /// ----------
 /// arr
 ///     1D continuous numpy array.
+/// reverse
+///     If `True`, sort in descending order.
 /// method
 ///     Method to use for sorting: "standard", "radix", "fastest"
 ///     (uses standard or radix sort depending on the size).
@@ -646,30 +678,34 @@ pub fn arg_sort_1d_u8_py<'py>(
 pub fn arg_sort_1d_u16_py<'py>(
     py: Python<'py>,
     arr: PyReadonlyArray1<'py, u16>,
+    reverse: bool,
     method: &str,
 ) -> Bound<'py, PyArray1<usize>> {
     let method = ArgSortMethod::try_from(method).unwrap_or(ArgSortMethod::Fastest);
 
-    match method {
+    let mut arg_sorted = match method {
         ArgSortMethod::Standard => arr
             .as_array()
             .as_slice()
             .unwrap()
-            .arg_sort()
-            .into_pyarray(py),
+            .arg_sort(),
         ArgSortMethod::Radix => arr
             .as_array()
             .as_slice()
             .unwrap()
-            .arg_sort_radix()
-            .into_pyarray(py),
+            .arg_sort_radix(),
         ArgSortMethod::Fastest => arr
             .as_array()
             .as_slice()
             .unwrap()
-            .arg_sort_fastest()
-            .into_pyarray(py),
-    }
+            .arg_sort_fastest(),
+    };
+
+    if reverse {
+       arg_sorted.reverse();
+    };
+
+    arg_sorted.into_pyarray(py)
 }
 
 #[pyfunction]
@@ -684,6 +720,8 @@ pub fn arg_sort_1d_u16_py<'py>(
 /// ----------
 /// arr
 ///     1D continuous numpy array.
+/// reverse
+///     If `True`, sort in descending order.
 /// method
 ///     Method to use for sorting: "standard", "radix", "fastest"
 ///     (uses standard or radix sort depending on the size).
@@ -691,30 +729,34 @@ pub fn arg_sort_1d_u16_py<'py>(
 pub fn arg_sort_1d_u32_py<'py>(
     py: Python<'py>,
     arr: PyReadonlyArray1<'py, u32>,
+    reverse: bool,
     method: &str,
 ) -> Bound<'py, PyArray1<usize>> {
     let method = ArgSortMethod::try_from(method).unwrap_or(ArgSortMethod::Fastest);
 
-    match method {
+    let mut arg_sorted = match method {
         ArgSortMethod::Standard => arr
             .as_array()
             .as_slice()
             .unwrap()
-            .arg_sort()
-            .into_pyarray(py),
+            .arg_sort(),
         ArgSortMethod::Radix => arr
             .as_array()
             .as_slice()
             .unwrap()
-            .arg_sort_radix()
-            .into_pyarray(py),
+            .arg_sort_radix(),
         ArgSortMethod::Fastest => arr
             .as_array()
             .as_slice()
             .unwrap()
-            .arg_sort_fastest()
-            .into_pyarray(py),
-    }
+            .arg_sort_fastest(),
+    };
+
+    if reverse {
+       arg_sorted.reverse();
+    };
+
+    arg_sorted.into_pyarray(py)
 }
 
 #[pyfunction]
@@ -729,6 +771,8 @@ pub fn arg_sort_1d_u32_py<'py>(
 /// ----------
 /// arr
 ///     1D continuous numpy array.
+/// reverse
+///     If `True`, sort in descending order.
 /// method
 ///     Method to use for sorting: "standard", "radix", "fastest"
 ///     (uses standard or radix sort depending on the size).
@@ -736,30 +780,34 @@ pub fn arg_sort_1d_u32_py<'py>(
 pub fn arg_sort_1d_u64_py<'py>(
     py: Python<'py>,
     arr: PyReadonlyArray1<'py, u64>,
+    reverse: bool,
     method: &str,
 ) -> Bound<'py, PyArray1<usize>> {
     let method = ArgSortMethod::try_from(method).unwrap_or(ArgSortMethod::Fastest);
 
-    match method {
+    let mut arg_sorted = match method {
         ArgSortMethod::Standard => arr
             .as_array()
             .as_slice()
             .unwrap()
-            .arg_sort()
-            .into_pyarray(py),
+            .arg_sort(),
         ArgSortMethod::Radix => arr
             .as_array()
             .as_slice()
             .unwrap()
-            .arg_sort_radix()
-            .into_pyarray(py),
+            .arg_sort_radix(),
         ArgSortMethod::Fastest => arr
             .as_array()
             .as_slice()
             .unwrap()
-            .arg_sort_fastest()
-            .into_pyarray(py),
-    }
+            .arg_sort_fastest(),
+    };
+
+    if reverse {
+       arg_sorted.reverse();
+    };
+
+    arg_sorted.into_pyarray(py)
 }
 
 #[pyfunction]
@@ -774,6 +822,8 @@ pub fn arg_sort_1d_u64_py<'py>(
 /// ----------
 /// arr
 ///     1D continuous numpy array.
+/// reverse
+///     If `True`, sort in descending order.
 /// method
 ///     Method to use for sorting: "standard", "radix", "fastest"
 ///     (uses standard or radix sort depending on the size).
@@ -781,30 +831,34 @@ pub fn arg_sort_1d_u64_py<'py>(
 pub fn arg_sort_1d_f32_py<'py>(
     py: Python<'py>,
     arr: PyReadonlyArray1<'py, f32>,
+    reverse: bool,
     method: &str,
 ) -> Bound<'py, PyArray1<usize>> {
     let method = ArgSortMethod::try_from(method).unwrap_or(ArgSortMethod::Fastest);
 
-    match method {
+    let mut arg_sorted = match method {
         ArgSortMethod::Standard => arr
             .as_array()
             .as_slice()
             .unwrap()
-            .arg_sort()
-            .into_pyarray(py),
+            .arg_sort(),
         ArgSortMethod::Radix => arr
             .as_array()
             .as_slice()
             .unwrap()
-            .arg_sort_radix()
-            .into_pyarray(py),
+            .arg_sort_radix(),
         ArgSortMethod::Fastest => arr
             .as_array()
             .as_slice()
             .unwrap()
-            .arg_sort_fastest()
-            .into_pyarray(py),
-    }
+            .arg_sort_fastest(),
+    };
+
+    if reverse {
+       arg_sorted.reverse();
+    };
+
+    arg_sorted.into_pyarray(py)
 }
 
 #[pyfunction]
@@ -819,6 +873,8 @@ pub fn arg_sort_1d_f32_py<'py>(
 /// ----------
 /// arr
 ///     1D continuous numpy array.
+/// reverse
+///     If `True`, sort in descending order.
 /// method
 ///     Method to use for sorting: "standard", "radix", "fastest"
 ///     (uses standard or radix sort depending on the size).
@@ -826,28 +882,32 @@ pub fn arg_sort_1d_f32_py<'py>(
 pub fn arg_sort_1d_f64_py<'py>(
     py: Python<'py>,
     arr: PyReadonlyArray1<'py, f64>,
+    reverse: bool,
     method: &str,
 ) -> Bound<'py, PyArray1<usize>> {
     let method = ArgSortMethod::try_from(method).unwrap_or(ArgSortMethod::Fastest);
 
-    match method {
+    let mut arg_sorted = match method {
         ArgSortMethod::Standard => arr
             .as_array()
             .as_slice()
             .unwrap()
-            .arg_sort()
-            .into_pyarray(py),
+            .arg_sort(),
         ArgSortMethod::Radix => arr
             .as_array()
             .as_slice()
             .unwrap()
-            .arg_sort_radix()
-            .into_pyarray(py),
+            .arg_sort_radix(),
         ArgSortMethod::Fastest => arr
             .as_array()
             .as_slice()
             .unwrap()
-            .arg_sort_fastest()
-            .into_pyarray(py),
-    }
+            .arg_sort_fastest(),
+    };
+
+    if reverse {
+       arg_sorted.reverse();
+    };
+
+    arg_sorted.into_pyarray(py)
 }

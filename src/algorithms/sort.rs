@@ -10,17 +10,24 @@ use voracious_radix_sort::RadixSort;
 /// ----------
 /// arr
 ///     1D continuous numpy array.
+/// reverse
+///     If `True`, sort in descending order.
+///
 pub fn sort_1d_i8_py<'py>(
     py: Python<'py>,
     arr: PyReadonlyArray1<'py, i8>,
+    reverse: bool,
 ) -> Bound<'py, PyArray1<i8>> {
     let len = arr.len().unwrap();
     let mut arr_sorted = Vec::with_capacity(len);
     unsafe {
         arr_sorted.set_len(len);
     }
-    arr_sorted.clone_from_slice(&arr.as_array().as_slice().unwrap());
+    arr_sorted.clone_from_slice(arr.as_array().as_slice().unwrap());
     arr_sorted.voracious_sort();
+    if reverse {
+        arr_sorted.reverse();
+    }
     arr_sorted.into_pyarray(py)
 }
 
@@ -32,17 +39,24 @@ pub fn sort_1d_i8_py<'py>(
 /// ----------
 /// arr
 ///     1D continuous numpy array.
+/// reverse
+///     If `True`, sort in descending order.
+///
 pub fn sort_1d_i16_py<'py>(
     py: Python<'py>,
     arr: PyReadonlyArray1<'py, i16>,
+    reverse: bool,
 ) -> Bound<'py, PyArray1<i16>> {
     let len = arr.len().unwrap();
     let mut arr_sorted = Vec::with_capacity(len);
     unsafe {
         arr_sorted.set_len(len);
     }
-    arr_sorted.clone_from_slice(&arr.as_array().as_slice().unwrap());
+    arr_sorted.clone_from_slice(arr.as_array().as_slice().unwrap());
     arr_sorted.voracious_sort();
+    if reverse {
+        arr_sorted.reverse();
+    }
     arr_sorted.into_pyarray(py)
 }
 
@@ -54,17 +68,24 @@ pub fn sort_1d_i16_py<'py>(
 /// ----------
 /// arr
 ///     1D continuous numpy array.
+/// reverse
+///     If `True`, sort in descending order.
+///
 pub fn sort_1d_i32_py<'py>(
     py: Python<'py>,
     arr: PyReadonlyArray1<'py, i32>,
+    reverse: bool,
 ) -> Bound<'py, PyArray1<i32>> {
     let len = arr.len().unwrap();
     let mut arr_sorted = Vec::with_capacity(len);
     unsafe {
         arr_sorted.set_len(len);
     }
-    arr_sorted.clone_from_slice(&arr.as_array().as_slice().unwrap());
+    arr_sorted.clone_from_slice(arr.as_array().as_slice().unwrap());
     arr_sorted.voracious_sort();
+    if reverse {
+        arr_sorted.reverse();
+    }
     arr_sorted.into_pyarray(py)
 }
 
@@ -76,17 +97,24 @@ pub fn sort_1d_i32_py<'py>(
 /// ----------
 /// arr
 ///     1D continuous numpy array.
+/// reverse
+///     If `True`, sort in descending order.
+///
 pub fn sort_1d_i64_py<'py>(
     py: Python<'py>,
     arr: PyReadonlyArray1<'py, i64>,
+    reverse: bool,
 ) -> Bound<'py, PyArray1<i64>> {
     let len = arr.len().unwrap();
     let mut arr_sorted = Vec::with_capacity(len);
     unsafe {
         arr_sorted.set_len(len);
     }
-    arr_sorted.clone_from_slice(&arr.as_array().as_slice().unwrap());
+    arr_sorted.clone_from_slice(arr.as_array().as_slice().unwrap());
     arr_sorted.voracious_sort();
+    if reverse {
+        arr_sorted.reverse();
+    }
     arr_sorted.into_pyarray(py)
 }
 
@@ -98,17 +126,24 @@ pub fn sort_1d_i64_py<'py>(
 /// ----------
 /// arr
 ///     1D continuous numpy array.
+/// reverse
+///     If `True`, sort in descending order.
+///
 pub fn sort_1d_u8_py<'py>(
     py: Python<'py>,
     arr: PyReadonlyArray1<'py, u8>,
+    reverse: bool,
 ) -> Bound<'py, PyArray1<u8>> {
     let len = arr.len().unwrap();
     let mut arr_sorted = Vec::with_capacity(len);
     unsafe {
         arr_sorted.set_len(len);
     }
-    arr_sorted.clone_from_slice(&arr.as_array().as_slice().unwrap());
+    arr_sorted.clone_from_slice(arr.as_array().as_slice().unwrap());
     arr_sorted.voracious_sort();
+    if reverse {
+        arr_sorted.reverse();
+    }
     arr_sorted.into_pyarray(py)
 }
 
@@ -120,17 +155,24 @@ pub fn sort_1d_u8_py<'py>(
 /// ----------
 /// arr
 ///     1D continuous numpy array.
+/// reverse
+///     If `True`, sort in descending order.
+///
 pub fn sort_1d_u16_py<'py>(
     py: Python<'py>,
     arr: PyReadonlyArray1<'py, u16>,
+    reverse: bool,
 ) -> Bound<'py, PyArray1<u16>> {
     let len = arr.len().unwrap();
     let mut arr_sorted = Vec::with_capacity(len);
     unsafe {
         arr_sorted.set_len(len);
     }
-    arr_sorted.clone_from_slice(&arr.as_array().as_slice().unwrap());
+    arr_sorted.clone_from_slice(arr.as_array().as_slice().unwrap());
     arr_sorted.voracious_sort();
+    if reverse {
+        arr_sorted.reverse();
+    }
     arr_sorted.into_pyarray(py)
 }
 
@@ -142,17 +184,24 @@ pub fn sort_1d_u16_py<'py>(
 /// ----------
 /// arr
 ///     1D continuous numpy array.
+/// reverse
+///     If `True`, sort in descending order.
+///
 pub fn sort_1d_u32_py<'py>(
     py: Python<'py>,
     arr: PyReadonlyArray1<'py, u32>,
+    reverse: bool,
 ) -> Bound<'py, PyArray1<u32>> {
     let len = arr.len().unwrap();
     let mut arr_sorted = Vec::with_capacity(len);
     unsafe {
         arr_sorted.set_len(len);
     }
-    arr_sorted.clone_from_slice(&arr.as_array().as_slice().unwrap());
+    arr_sorted.clone_from_slice(arr.as_array().as_slice().unwrap());
     arr_sorted.voracious_sort();
+    if reverse {
+        arr_sorted.reverse();
+    }
     arr_sorted.into_pyarray(py)
 }
 
@@ -164,17 +213,24 @@ pub fn sort_1d_u32_py<'py>(
 /// ----------
 /// arr
 ///     1D continuous numpy array.
+/// reverse
+///     If `True`, sort in descending order.
+///
 pub fn sort_1d_u64_py<'py>(
     py: Python<'py>,
     arr: PyReadonlyArray1<'py, u64>,
+    reverse: bool,
 ) -> Bound<'py, PyArray1<u64>> {
     let len = arr.len().unwrap();
     let mut arr_sorted = Vec::with_capacity(len);
     unsafe {
         arr_sorted.set_len(len);
     }
-    arr_sorted.clone_from_slice(&arr.as_array().as_slice().unwrap());
+    arr_sorted.clone_from_slice(arr.as_array().as_slice().unwrap());
     arr_sorted.voracious_sort();
+    if reverse {
+        arr_sorted.reverse();
+    }
     arr_sorted.into_pyarray(py)
 }
 
@@ -186,17 +242,24 @@ pub fn sort_1d_u64_py<'py>(
 /// ----------
 /// arr
 ///     1D continuous numpy array.
+/// reverse
+///     If `True`, sort in descending order.
+///
 pub fn sort_1d_f32_py<'py>(
     py: Python<'py>,
     arr: PyReadonlyArray1<'py, f32>,
+    reverse: bool,
 ) -> Bound<'py, PyArray1<f32>> {
     let len = arr.len().unwrap();
     let mut arr_sorted = Vec::with_capacity(len);
     unsafe {
         arr_sorted.set_len(len);
     }
-    arr_sorted.clone_from_slice(&arr.as_array().as_slice().unwrap());
+    arr_sorted.clone_from_slice(arr.as_array().as_slice().unwrap());
     arr_sorted.voracious_sort();
+    if reverse {
+        arr_sorted.reverse();
+    }
     arr_sorted.into_pyarray(py)
 }
 
@@ -208,16 +271,23 @@ pub fn sort_1d_f32_py<'py>(
 /// ----------
 /// arr
 ///     1D continuous numpy array.
+/// reverse
+///     If `True`, sort in descending order.
+///
 pub fn sort_1d_f64_py<'py>(
     py: Python<'py>,
     arr: PyReadonlyArray1<'py, f64>,
+    reverse: bool,
 ) -> Bound<'py, PyArray1<f64>> {
     let len = arr.len().unwrap();
     let mut arr_sorted = Vec::with_capacity(len);
     unsafe {
         arr_sorted.set_len(len);
     }
-    arr_sorted.clone_from_slice(&arr.as_array().as_slice().unwrap());
+    arr_sorted.clone_from_slice(arr.as_array().as_slice().unwrap());
     arr_sorted.voracious_sort();
+    if reverse {
+        arr_sorted.reverse();
+    }
     arr_sorted.into_pyarray(py)
 }
