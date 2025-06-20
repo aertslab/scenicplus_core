@@ -1,7 +1,30 @@
 import numpy as np
 import numpy.typing as npt
 
-import scenicplus_core
+from scenicplus_core.scenicplus_core import algorithms as spc_algorithms
+
+
+def gini(arr: npt.NDArray[np.float32] | npt.NDArray[np.float64]) -> float:
+    """
+    Calculate the Gini coefficient.
+
+    The Gini coefficient is a measure of statistical dispersion that represents
+    the income or wealth distribution of a nation's residents, and is commonly used
+    as a measure of inequality.
+
+    Parameters
+    ----------
+    arr
+        1D float numpy array with all values greater than zero.
+
+    Returns
+    -------
+    gini_coefficient
+        The Gini coefficient, a value between 0 and 1, where 0 represents perfect
+        equality and 1 represents perfect inequality.
+
+    """
+    return spc_algorithms.gini(np.ascontiguousarray(arr, dtype=np.float64))
 
 
 def p_adjust_bh(
@@ -41,8 +64,8 @@ def p_adjust_bh(
 
     """
     ps = np.asfarray(ps)
-    by_descend = scenicplus_core.algorithms.arg_sort(ps, reverse=True)
-    by_orig = scenicplus_core.algorithms.arg_sort(by_descend)
+    by_descend = spc_algorithms.arg_sort(ps, reverse=True)
+    by_orig = spc_algorithms.arg_sort(by_descend)
     steps = float(len(ps)) / np.arange(len(ps), 0, -1, dtype=np.float64)
     ps_adjusted = np.minimum(1, np.minimum.accumulate(steps * ps[by_descend]))
     return ps_adjusted[by_orig]
