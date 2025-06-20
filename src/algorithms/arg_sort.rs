@@ -429,25 +429,13 @@ pub fn arg_sort_1d_i8_py<'py>(
     let method = ArgSortMethod::try_from(method).unwrap_or(ArgSortMethod::Fastest);
 
     let mut arg_sorted = match method {
-        ArgSortMethod::Standard => arr
-            .as_array()
-            .as_slice()
-            .unwrap()
-            .arg_sort(),
-        ArgSortMethod::Radix => arr
-            .as_array()
-            .as_slice()
-            .unwrap()
-            .arg_sort_radix(),
-        ArgSortMethod::Fastest => arr
-            .as_array()
-            .as_slice()
-            .unwrap()
-            .arg_sort_fastest(),
+        ArgSortMethod::Standard => arr.as_array().as_slice().unwrap().arg_sort(),
+        ArgSortMethod::Radix => arr.as_array().as_slice().unwrap().arg_sort_radix(),
+        ArgSortMethod::Fastest => arr.as_array().as_slice().unwrap().arg_sort_fastest(),
     };
 
     if reverse {
-       arg_sorted.reverse();
+        arg_sorted.reverse();
     };
 
     arg_sorted.into_pyarray(py)
@@ -480,25 +468,13 @@ pub fn arg_sort_1d_i16_py<'py>(
     let method = ArgSortMethod::try_from(method).unwrap_or(ArgSortMethod::Fastest);
 
     let mut arg_sorted = match method {
-        ArgSortMethod::Standard => arr
-            .as_array()
-            .as_slice()
-            .unwrap()
-            .arg_sort(),
-        ArgSortMethod::Radix => arr
-            .as_array()
-            .as_slice()
-            .unwrap()
-            .arg_sort_radix(),
-        ArgSortMethod::Fastest => arr
-            .as_array()
-            .as_slice()
-            .unwrap()
-            .arg_sort_fastest(),
+        ArgSortMethod::Standard => arr.as_array().as_slice().unwrap().arg_sort(),
+        ArgSortMethod::Radix => arr.as_array().as_slice().unwrap().arg_sort_radix(),
+        ArgSortMethod::Fastest => arr.as_array().as_slice().unwrap().arg_sort_fastest(),
     };
 
     if reverse {
-       arg_sorted.reverse();
+        arg_sorted.reverse();
     };
 
     arg_sorted.into_pyarray(py)
@@ -531,25 +507,13 @@ pub fn arg_sort_1d_i32_py<'py>(
     let method = ArgSortMethod::try_from(method).unwrap_or(ArgSortMethod::Fastest);
 
     let mut arg_sorted = match method {
-        ArgSortMethod::Standard => arr
-            .as_array()
-            .as_slice()
-            .unwrap()
-            .arg_sort(),
-        ArgSortMethod::Radix => arr
-            .as_array()
-            .as_slice()
-            .unwrap()
-            .arg_sort_radix(),
-        ArgSortMethod::Fastest => arr
-            .as_array()
-            .as_slice()
-            .unwrap()
-            .arg_sort_fastest(),
+        ArgSortMethod::Standard => arr.as_array().as_slice().unwrap().arg_sort(),
+        ArgSortMethod::Radix => arr.as_array().as_slice().unwrap().arg_sort_radix(),
+        ArgSortMethod::Fastest => arr.as_array().as_slice().unwrap().arg_sort_fastest(),
     };
 
     if reverse {
-       arg_sorted.reverse();
+        arg_sorted.reverse();
     };
 
     arg_sorted.into_pyarray(py)
@@ -582,25 +546,13 @@ pub fn arg_sort_1d_i64_py<'py>(
     let method = ArgSortMethod::try_from(method).unwrap_or(ArgSortMethod::Fastest);
 
     let mut arg_sorted = match method {
-        ArgSortMethod::Standard => arr
-            .as_array()
-            .as_slice()
-            .unwrap()
-            .arg_sort(),
-        ArgSortMethod::Radix => arr
-            .as_array()
-            .as_slice()
-            .unwrap()
-            .arg_sort_radix(),
-        ArgSortMethod::Fastest => arr
-            .as_array()
-            .as_slice()
-            .unwrap()
-            .arg_sort_fastest(),
+        ArgSortMethod::Standard => arr.as_array().as_slice().unwrap().arg_sort(),
+        ArgSortMethod::Radix => arr.as_array().as_slice().unwrap().arg_sort_radix(),
+        ArgSortMethod::Fastest => arr.as_array().as_slice().unwrap().arg_sort_fastest(),
     };
 
     if reverse {
-       arg_sorted.reverse();
+        arg_sorted.reverse();
     };
 
     arg_sorted.into_pyarray(py)
@@ -633,25 +585,13 @@ pub fn arg_sort_1d_u8_py<'py>(
     let method = ArgSortMethod::try_from(method).unwrap_or(ArgSortMethod::Fastest);
 
     let mut arg_sorted = match method {
-        ArgSortMethod::Standard => arr
-            .as_array()
-            .as_slice()
-            .unwrap()
-            .arg_sort(),
-        ArgSortMethod::Radix => arr
-            .as_array()
-            .as_slice()
-            .unwrap()
-            .arg_sort_radix(),
-        ArgSortMethod::Fastest => arr
-            .as_array()
-            .as_slice()
-            .unwrap()
-            .arg_sort_fastest(),
+        ArgSortMethod::Standard => arr.as_array().as_slice().unwrap().arg_sort(),
+        ArgSortMethod::Radix => arr.as_array().as_slice().unwrap().arg_sort_radix(),
+        ArgSortMethod::Fastest => arr.as_array().as_slice().unwrap().arg_sort_fastest(),
     };
 
     if reverse {
-       arg_sorted.reverse();
+        arg_sorted.reverse();
     };
 
     arg_sorted.into_pyarray(py)
@@ -684,25 +624,13 @@ pub fn arg_sort_1d_u16_py<'py>(
     let method = ArgSortMethod::try_from(method).unwrap_or(ArgSortMethod::Fastest);
 
     let mut arg_sorted = match method {
-        ArgSortMethod::Standard => arr
-            .as_array()
-            .as_slice()
-            .unwrap()
-            .arg_sort(),
-        ArgSortMethod::Radix => arr
-            .as_array()
-            .as_slice()
-            .unwrap()
-            .arg_sort_radix(),
-        ArgSortMethod::Fastest => arr
-            .as_array()
-            .as_slice()
-            .unwrap()
-            .arg_sort_fastest(),
+        ArgSortMethod::Standard => arr.as_array().as_slice().unwrap().arg_sort(),
+        ArgSortMethod::Radix => arr.as_array().as_slice().unwrap().arg_sort_radix(),
+        ArgSortMethod::Fastest => arr.as_array().as_slice().unwrap().arg_sort_fastest(),
     };
 
     if reverse {
-       arg_sorted.reverse();
+        arg_sorted.reverse();
     };
 
     arg_sorted.into_pyarray(py)
@@ -735,25 +663,13 @@ pub fn arg_sort_1d_u32_py<'py>(
     let method = ArgSortMethod::try_from(method).unwrap_or(ArgSortMethod::Fastest);
 
     let mut arg_sorted = match method {
-        ArgSortMethod::Standard => arr
-            .as_array()
-            .as_slice()
-            .unwrap()
-            .arg_sort(),
-        ArgSortMethod::Radix => arr
-            .as_array()
-            .as_slice()
-            .unwrap()
-            .arg_sort_radix(),
-        ArgSortMethod::Fastest => arr
-            .as_array()
-            .as_slice()
-            .unwrap()
-            .arg_sort_fastest(),
+        ArgSortMethod::Standard => arr.as_array().as_slice().unwrap().arg_sort(),
+        ArgSortMethod::Radix => arr.as_array().as_slice().unwrap().arg_sort_radix(),
+        ArgSortMethod::Fastest => arr.as_array().as_slice().unwrap().arg_sort_fastest(),
     };
 
     if reverse {
-       arg_sorted.reverse();
+        arg_sorted.reverse();
     };
 
     arg_sorted.into_pyarray(py)
@@ -786,25 +702,13 @@ pub fn arg_sort_1d_u64_py<'py>(
     let method = ArgSortMethod::try_from(method).unwrap_or(ArgSortMethod::Fastest);
 
     let mut arg_sorted = match method {
-        ArgSortMethod::Standard => arr
-            .as_array()
-            .as_slice()
-            .unwrap()
-            .arg_sort(),
-        ArgSortMethod::Radix => arr
-            .as_array()
-            .as_slice()
-            .unwrap()
-            .arg_sort_radix(),
-        ArgSortMethod::Fastest => arr
-            .as_array()
-            .as_slice()
-            .unwrap()
-            .arg_sort_fastest(),
+        ArgSortMethod::Standard => arr.as_array().as_slice().unwrap().arg_sort(),
+        ArgSortMethod::Radix => arr.as_array().as_slice().unwrap().arg_sort_radix(),
+        ArgSortMethod::Fastest => arr.as_array().as_slice().unwrap().arg_sort_fastest(),
     };
 
     if reverse {
-       arg_sorted.reverse();
+        arg_sorted.reverse();
     };
 
     arg_sorted.into_pyarray(py)
@@ -837,25 +741,13 @@ pub fn arg_sort_1d_f32_py<'py>(
     let method = ArgSortMethod::try_from(method).unwrap_or(ArgSortMethod::Fastest);
 
     let mut arg_sorted = match method {
-        ArgSortMethod::Standard => arr
-            .as_array()
-            .as_slice()
-            .unwrap()
-            .arg_sort(),
-        ArgSortMethod::Radix => arr
-            .as_array()
-            .as_slice()
-            .unwrap()
-            .arg_sort_radix(),
-        ArgSortMethod::Fastest => arr
-            .as_array()
-            .as_slice()
-            .unwrap()
-            .arg_sort_fastest(),
+        ArgSortMethod::Standard => arr.as_array().as_slice().unwrap().arg_sort(),
+        ArgSortMethod::Radix => arr.as_array().as_slice().unwrap().arg_sort_radix(),
+        ArgSortMethod::Fastest => arr.as_array().as_slice().unwrap().arg_sort_fastest(),
     };
 
     if reverse {
-       arg_sorted.reverse();
+        arg_sorted.reverse();
     };
 
     arg_sorted.into_pyarray(py)
@@ -888,25 +780,13 @@ pub fn arg_sort_1d_f64_py<'py>(
     let method = ArgSortMethod::try_from(method).unwrap_or(ArgSortMethod::Fastest);
 
     let mut arg_sorted = match method {
-        ArgSortMethod::Standard => arr
-            .as_array()
-            .as_slice()
-            .unwrap()
-            .arg_sort(),
-        ArgSortMethod::Radix => arr
-            .as_array()
-            .as_slice()
-            .unwrap()
-            .arg_sort_radix(),
-        ArgSortMethod::Fastest => arr
-            .as_array()
-            .as_slice()
-            .unwrap()
-            .arg_sort_fastest(),
+        ArgSortMethod::Standard => arr.as_array().as_slice().unwrap().arg_sort(),
+        ArgSortMethod::Radix => arr.as_array().as_slice().unwrap().arg_sort_radix(),
+        ArgSortMethod::Fastest => arr.as_array().as_slice().unwrap().arg_sort_fastest(),
     };
 
     if reverse {
-       arg_sorted.reverse();
+        arg_sorted.reverse();
     };
 
     arg_sorted.into_pyarray(py)
